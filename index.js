@@ -6,7 +6,7 @@
  *
  * Copyright (c) 2015 Takuto Wada
  * Licensed under the MIT license.
- *   http://twada.mit-license.org/
+ *   https://github.com/twada/call-matcher/blob/master/MIT-LICENSE.txt
  */
 'use strict';
 /* jshint -W024 */
