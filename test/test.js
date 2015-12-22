@@ -6,6 +6,10 @@ var esprima = require('esprima');
 var estraverse = require('estraverse');
 var espurify = require('espurify');
 var assert = require('assert');
+var babelTypes = require('babel-types');
+var babylon = require('babylon');
+var fs = require('fs');
+var path = require('path');
 
 function createMatcher (signatureStr, options) {
     var ast = esprima.parse(signatureStr);
@@ -16,10 +20,14 @@ function createMatcher (signatureStr, options) {
 function matchCode (matcher, targetCode) {
     var esprimaOptions = {tolerant: true, loc: true, tokens: true, raw: true};
     var ast = esprima.parse(targetCode, esprimaOptions);
+    return matchAst(matcher, ast);
+}
+
+function matchAst (matcher, ast, visitorKeys) {
     var calls = [];
     var args = [];
     var captured = {};
-    estraverse.traverse(ast, {
+    var visitor = {
         leave: function (currentNode, parentNode) {
             if (matcher.test(currentNode)) {
                 calls.push(currentNode);
@@ -30,7 +38,11 @@ function matchCode (matcher, targetCode) {
                 captured[matched.name] = currentNode;
             }
         }
-    });
+    };
+    if (visitorKeys) {
+        visitor.keys = visitorKeys;
+    }
+    estraverse.traverse(ast, visitor);
     return {
         calls: calls,
         args: args,
@@ -551,4 +563,26 @@ it('not Identifier', function () {
             value: 0
         }
     });
+});
+
+
+it('JSX and Flow Nodes', function () {
+    var code = fs.readFileSync(path.join(__dirname, 'fixtures', 'CounterContainer.jsx'), 'utf8');
+    var ast = babylon.parse(code, {
+        sourceType: "module",
+        plugins: [
+            "classProperties",
+            "jsx",
+            "flow"
+        ]
+    });
+    var matcher = createMatcher('assert(value, [message])', {
+        astWhiteList: babelTypes.BUILDER_KEYS,
+        visitorKeys: babelTypes.VISITOR_KEYS
+    });
+    var matched;
+    assert.doesNotThrow(function () {
+        matched = matchAst(matcher, ast, babelTypes.VISITOR_KEYS);
+    });
+    assert.equal(matched.calls.length, 0);
 });
