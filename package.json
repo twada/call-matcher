@@ -23,7 +23,7 @@
     "derequire": "^2.0.2",
     "dereserve": "^0.1.1",
     "esprima": "^2.0.0",
-    "jshint": "^2.8.0",
+    "jshint": "2.8.0",
     "licensify": "^2.0.1",
     "mocha": "^2.3.3"
   },
