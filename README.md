@@ -3,6 +3,11 @@ call-matcher
 
 ECMAScript CallExpression matcher made from function/method signature
 
+[![Build Status][travis-image]][travis-url]
+[![NPM version][npm-image]][npm-url]
+[![Dependency Status][depstat-image]][depstat-url]
+[![License][license-image]][license-url]
+
 
 EXAMPLE
 ---------------------------------------
@@ -177,3 +182,16 @@ AUTHOR
 LICENSE
 ---------------------------------------
 Licensed under the [MIT](https://github.com/twada/call-matcher/blob/master/MIT-LICENSE.txt) license.
+
+
+[npm-url]: https://npmjs.org/package/call-matcher
+[npm-image]: https://badge.fury.io/js/call-matcher.svg
+
+[travis-url]: http://travis-ci.org/twada/call-matcher
+[travis-image]: https://secure.travis-ci.org/twada/call-matcher.svg?branch=master
+
+[depstat-url]: https://gemnasium.com/twada/call-matcher
+[depstat-image]: https://gemnasium.com/twada/call-matcher.svg
+
+[license-url]: https://github.com/twada/call-matcher/blob/master/MIT-LICENSE.txt
+[license-image]: http://img.shields.io/badge/license-MIT-brightgreen.svg
