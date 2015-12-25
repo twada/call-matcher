@@ -127,7 +127,7 @@ Tests whether `node` matches the signature or not.
  - Returns `true` if matched.
  - Returns `false` if not matched.
 
-`node` should be an AST node object defined in [Mozilla JavaScript AST spec](https://developer.mozilla.org/en-US/docs/SpiderMonkey/Parser_API).
+`node` should be an AST node object defined in [The ESTree Spec](https://github.com/estree/estree) (formerly known as [Mozilla SpiderMonkey Parser API](https://developer.mozilla.org/en-US/docs/SpiderMonkey/Parser_API)).
 
 
 ### var argMatched = matcher.matchArgument(node, parentNode)
@@ -137,12 +137,12 @@ Returns match result object representing whether `node` (and its `parentNode`) m
  - Returns `null` if not matched.
  - If matched, returns object like `{name: 'actual', kind: 'mandatory'}`, whose `name` is an argument name in the signature and `kind` is `'mandatory'` or `'optional'`.
 
-`node` and `parentNode` should be AST node objects defined in [Mozilla JavaScript AST spec](https://developer.mozilla.org/en-US/docs/SpiderMonkey/Parser_API).
+`node` and `parentNode` should be AST node objects defined in [The ESTree Spec](https://github.com/estree/estree) (formerly known as [Mozilla SpiderMonkey Parser API](https://developer.mozilla.org/en-US/docs/SpiderMonkey/Parser_API)).
 
 
 ### var calleeAst = matcher.calleeAst()
 
-Returns clone of callee AST object based on signature passed to `CallMatcher` function. Returned tree is one of AST node objects defined in [Mozilla JavaScript AST spec](https://developer.mozilla.org/en-US/docs/SpiderMonkey/Parser_API) (in most cases, `Identifier` or `MemberExpression`).
+Returns clone of callee AST object based on signature passed to `CallMatcher` function. Returned tree is one of AST node objects defined in [The ESTree Spec](https://github.com/estree/estree) (formerly known as [Mozilla SpiderMonkey Parser API](https://developer.mozilla.org/en-US/docs/SpiderMonkey/Parser_API)) (in most cases, `Identifier` or `MemberExpression`).
 
 
 ### var argSigs = matcher.argumentSignatures()
