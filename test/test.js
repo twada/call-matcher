@@ -567,6 +567,13 @@ it('not Identifier', function () {
 
 
 it('JSX and Flow Nodes', function () {
+    var signatureAst = babylon.parse('assert(value, [message])');
+    var expression = signatureAst.program.body[0].expression;
+    var matcher = new CallMatcher(expression, {
+        astWhiteList: babelTypes.BUILDER_KEYS,
+        visitorKeys: babelTypes.VISITOR_KEYS
+    });
+
     var code = fs.readFileSync(path.join(__dirname, 'fixtures', 'CounterContainer.jsx'), 'utf8');
     var ast = babylon.parse(code, {
         sourceType: "module",
@@ -576,10 +583,7 @@ it('JSX and Flow Nodes', function () {
             "flow"
         ]
     });
-    var matcher = createMatcher('assert(value, [message])', {
-        astWhiteList: babelTypes.BUILDER_KEYS,
-        visitorKeys: babelTypes.VISITOR_KEYS
-    });
+
     var matched;
     assert.doesNotThrow(function () {
         matched = matchAst(matcher, ast, babelTypes.VISITOR_KEYS);
