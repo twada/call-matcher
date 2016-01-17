@@ -65,7 +65,7 @@ anotherAssert.equal(foo, bar);  // does not match (callee object name differs)
 equal(foo, bar);  // does not match (callee does not match)
 ```
 
-`call-matcher` is a spin-off product of [power-assert](http://github.com/twada/power-assert) project.
+`call-matcher` is a spin-off product of [power-assert](https://github.com/twada/power-assert) project.
 
 Pull-requests, issue reports and patches are always welcomed.
 
@@ -176,7 +176,7 @@ See [CHANGELOG](https://github.com/twada/call-matcher/blob/master/CHANGELOG.md)
 
 AUTHOR
 ---------------------------------------
-* [Takuto Wada](http://github.com/twada)
+* [Takuto Wada](https://github.com/twada)
 
 
 LICENSE
@@ -187,11 +187,11 @@ Licensed under the [MIT](https://github.com/twada/call-matcher/blob/master/MIT-L
 [npm-url]: https://npmjs.org/package/call-matcher
 [npm-image]: https://badge.fury.io/js/call-matcher.svg
 
-[travis-url]: http://travis-ci.org/twada/call-matcher
+[travis-url]: https://travis-ci.org/twada/call-matcher
 [travis-image]: https://secure.travis-ci.org/twada/call-matcher.svg?branch=master
 
 [depstat-url]: https://gemnasium.com/twada/call-matcher
 [depstat-image]: https://gemnasium.com/twada/call-matcher.svg
 
 [license-url]: https://github.com/twada/call-matcher/blob/master/MIT-LICENSE.txt
-[license-image]: http://img.shields.io/badge/license-MIT-brightgreen.svg
+[license-image]: https://img.shields.io/badge/license-MIT-brightgreen.svg
