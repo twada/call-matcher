@@ -27,6 +27,7 @@ var invalidFormMessage = 'Argument should be in the form of `name` or `[name]`';
 
 function CallMatcher (signatureAst, options) {
     validateApiExpression(signatureAst);
+    options = options || {};
     this.visitorKeys = options.visitorKeys || estraverse.VisitorKeys;
     if (options.astWhiteList) {
         this.purifyAst = espurify.cloneWithWhitelist(options.astWhiteList);

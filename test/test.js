@@ -590,3 +590,12 @@ it('JSX and Flow Nodes', function () {
     });
     assert.equal(matched.calls.length, 0);
 });
+
+
+it('options argument is optional', function () {
+    var ast = esprima.parse('assert(value, [message])');
+    var expression = ast.body[0].expression;
+    assert.doesNotThrow(function () {
+        new CallMatcher(expression);
+    });
+});
