@@ -1,3 +1,11 @@
+### [1.0.1](https://github.com/twada/call-matcher/releases/tag/v1.0.1) (2016-12-31)
+
+
+#### Bug Fixes
+
+  * make options argument optional ([271451cb](https://github.com/twada/call-matcher/commit/271451cb037832ff2f1bc8d950847c60761178c2))
+
+
 ## [1.0.0](https://github.com/twada/call-matcher/releases/tag/v1.0.0) (2016-05-28)
 
 
