@@ -23,7 +23,8 @@
     "esprima": "^3.0.0",
     "jshint": "^2.8.0",
     "licensify": "^3.1.1",
-    "mocha": "^3.0.0"
+    "mocha": "^3.0.0",
+    "package-json-filterify": "^1.0.4"
   },
   "files": [
     "CHANGELOG.md",
@@ -45,7 +46,7 @@
     "url": "git://github.com/twada/call-matcher.git"
   },
   "scripts": {
-    "dist": "mkdir -p dist && browserify index.js --plugin licensify --standalone CallMatcher | dereserve | derequire > ./dist/call-matcher.js",
+    "dist": "mkdir -p dist && browserify index.js --plugin licensify --global-transform package-json-filterify --standalone CallMatcher | dereserve | derequire > ./dist/call-matcher.js",
     "lint": "jshint index.js",
     "preversion": "npm test",
     "test": "npm run lint && mocha test",
