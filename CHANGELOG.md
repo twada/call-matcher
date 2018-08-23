@@ -1,3 +1,11 @@
+## [1.1.0](https://github.com/twada/call-matcher/releases/tag/v1.1.0) (2018-08-23)
+
+
+#### Features
+
+  * add index of matched argument to result of `#matchArgument` ([15e22d14](https://github.com/twada/call-matcher/commit/15e22d14dff614ba6e6836337e4d1342cefe173f))
+
+
 ### [1.0.1](https://github.com/twada/call-matcher/releases/tag/v1.0.1) (2016-12-31)
 
 
