@@ -135,7 +135,7 @@ Tests whether `node` matches the signature or not.
 Returns match result object representing whether `node` (and its `parentNode`) matches some argument of the signature or not.
 
  - Returns `null` if not matched.
- - If matched, returns object like `{name: 'actual', kind: 'mandatory'}`, whose `name` is an argument name in the signature and `kind` is `'mandatory'` or `'optional'`.
+ - If matched, returns object like `{index: 0, name: 'actual', kind: 'mandatory'}`, whose `index` is an index of matched argument, `name` is an argument name in the signature and `kind` is `'mandatory'` or `'optional'`.
 
 `node` and `parentNode` should be AST node objects defined in [The ESTree Spec](https://github.com/estree/estree) (formerly known as [Mozilla SpiderMonkey Parser API](https://developer.mozilla.org/en-US/docs/SpiderMonkey/Parser_API)).
 
@@ -147,7 +147,7 @@ Returns clone of callee AST object based on signature passed to `CallMatcher` fu
 
 ### var argSigs = matcher.argumentSignatures()
 
-Returns array of argument signature objects based on signature passed to `CallMatcher` function. Returns array of objects like `[{name: 'actual', kind: 'mandatory'}]`, whose `name` is an argument name in the signature and `kind` is `'mandatory'` or `'optional'`.
+Returns array of argument signature objects based on signature passed to `CallMatcher` function. Returns array of objects like `[{index: 0, name: 'actual', kind: 'mandatory'}]`, whose `index` is an index of matched argument, `name` is an argument name in the signature and `kind` is `'mandatory'` or `'optional'`.
 
 
 

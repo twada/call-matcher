@@ -126,9 +126,9 @@ describe('optional parameter variations', function () {
         });
         it('#argumentSignatures', function () {
             assert.deepEqual(this.matcher.argumentSignatures(), [
-                {name: 'value', kind: 'mandatory'},
-                {name: 'replacer', kind: 'optional'},
-                {name: 'space', kind: 'optional'}
+                {index: 0, name: 'value', kind: 'mandatory'},
+                {index: 1, name: 'replacer', kind: 'optional'},
+                {index: 2, name: 'space', kind: 'optional'}
             ]);
         });
         it ('match against "console.log(JSON.stringify(val));"', function () {
@@ -136,24 +136,24 @@ describe('optional parameter variations', function () {
             var matched = matchCode(this.matcher, code);
             assert.equal(matched.calls.length, 1);
             assert.equal(matched.args.length, 1);
-            assert.deepEqual(matched.args[0], {name: 'value', kind: 'mandatory'});
+            assert.deepEqual(matched.args[0], {index: 0, name: 'value', kind: 'mandatory'});
         });
         it ('match against "console.log(JSON.stringify(val, replacerFn));"', function () {
             var code = 'console.log(JSON.stringify(val, replacerFn));';
             var matched = matchCode(this.matcher, code);
             assert.equal(matched.calls.length, 1);
             assert.equal(matched.args.length, 2);
-            assert.deepEqual(matched.args[0], {name: 'value', kind: 'mandatory'});
-            assert.deepEqual(matched.args[1], {name: 'replacer', kind: 'optional'});
+            assert.deepEqual(matched.args[0], {index: 0, name: 'value', kind: 'mandatory'});
+            assert.deepEqual(matched.args[1], {index: 1, name: 'replacer', kind: 'optional'});
         });
         it ('match against "console.log(JSON.stringify(val, replacerFn, 2));"', function () {
             var code = 'console.log(JSON.stringify(val, replacerFn, 2));';
             var matched = matchCode(this.matcher, code);
             assert.equal(matched.calls.length, 1);
             assert.equal(matched.args.length, 3);
-            assert.deepEqual(matched.args[0], {name: 'value', kind: 'mandatory'});
-            assert.deepEqual(matched.args[1], {name: 'replacer', kind: 'optional'});
-            assert.deepEqual(matched.args[2], {name: 'space', kind: 'optional'});
+            assert.deepEqual(matched.args[0], {index: 0, name: 'value', kind: 'mandatory'});
+            assert.deepEqual(matched.args[1], {index: 1, name: 'replacer', kind: 'optional'});
+            assert.deepEqual(matched.args[2], {index: 2, name: 'space', kind: 'optional'});
         });
     });
     describe ('bizarre(foo, [bar], [baz], qux)', function () {
@@ -168,10 +168,10 @@ describe('optional parameter variations', function () {
         });
         it('#argumentSignatures', function () {
             assert.deepEqual(this.matcher.argumentSignatures(), [
-                {name: 'foo', kind: 'mandatory'},
-                {name: 'bar', kind: 'optional'},
-                {name: 'baz', kind: 'optional'},
-                {name: 'qux', kind: 'mandatory'}
+                {index: 0, name: 'foo', kind: 'mandatory'},
+                {index: 1, name: 'bar', kind: 'optional'},
+                {index: 2, name: 'baz', kind: 'optional'},
+                {index: 3, name: 'qux', kind: 'mandatory'}
             ]);
         });
         it ('match against "bizarre(spam, ham);"', function () {
@@ -179,27 +179,27 @@ describe('optional parameter variations', function () {
             var matched = matchCode(this.matcher, code);
             assert.equal(matched.calls.length, 1);
             assert.equal(matched.args.length, 2);
-            assert.deepEqual(matched.args[0], {name: 'foo', kind: 'mandatory'});
-            assert.deepEqual(matched.args[1], {name: 'qux', kind: 'mandatory'});
+            assert.deepEqual(matched.args[0], {index: 0, name: 'foo', kind: 'mandatory'});
+            assert.deepEqual(matched.args[1], {index: 3, name: 'qux', kind: 'mandatory'});
         });
         it ('match against "bizarre(spam, ham, egg);"', function () {
             var code = 'bizarre(spam, ham, egg);';
             var matched = matchCode(this.matcher, code);
             assert.equal(matched.calls.length, 1);
             assert.equal(matched.args.length, 3);
-            assert.deepEqual(matched.args[0], {name: 'foo', kind: 'mandatory'});
-            assert.deepEqual(matched.args[1], {name: 'bar', kind: 'optional'});
-            assert.deepEqual(matched.args[2], {name: 'qux', kind: 'mandatory'});
+            assert.deepEqual(matched.args[0], {index: 0, name: 'foo', kind: 'mandatory'});
+            assert.deepEqual(matched.args[1], {index: 1, name: 'bar', kind: 'optional'});
+            assert.deepEqual(matched.args[2], {index: 3, name: 'qux', kind: 'mandatory'});
         });
         it ('match against "bizarre(spam, ham, egg, sausage);"', function () {
             var code = 'bizarre(spam, ham, egg, sausage);';
             var matched = matchCode(this.matcher, code);
             assert.equal(matched.calls.length, 1);
             assert.equal(matched.args.length, 4);
-            assert.deepEqual(matched.args[0], {name: 'foo', kind: 'mandatory'});
-            assert.deepEqual(matched.args[1], {name: 'bar', kind: 'optional'});
-            assert.deepEqual(matched.args[2], {name: 'baz', kind: 'optional'});
-            assert.deepEqual(matched.args[3], {name: 'qux', kind: 'mandatory'});
+            assert.deepEqual(matched.args[0], {index: 0, name: 'foo', kind: 'mandatory'});
+            assert.deepEqual(matched.args[1], {index: 1, name: 'bar', kind: 'optional'});
+            assert.deepEqual(matched.args[2], {index: 2, name: 'baz', kind: 'optional'});
+            assert.deepEqual(matched.args[3], {index: 3, name: 'qux', kind: 'mandatory'});
         });
     });
 });
@@ -217,9 +217,9 @@ describe('optional parameter in the middle, glob(pattern, [options], cb)', funct
     });
     it('#argumentSignatures', function () {
         assert.deepEqual(this.matcher.argumentSignatures(), [
-            {name: 'pattern', kind: 'mandatory'},
-            {name: 'options', kind: 'optional'},
-            {name: 'cb', kind: 'mandatory'}
+            {index: 0, name: 'pattern', kind: 'mandatory'},
+            {index: 1, name: 'options', kind: 'optional'},
+            {index: 2, name: 'cb', kind: 'mandatory'}
         ]);
     });
     it('three args', function () {
@@ -232,9 +232,9 @@ describe('optional parameter in the middle, glob(pattern, [options], cb)', funct
         var matched = matchCode(this.matcher, code);
         assert.equal(matched.calls.length, 1);
         assert.equal(matched.args.length, 3);
-        assert.deepEqual(matched.args[0], {name: 'pattern', kind: 'mandatory'});
-        assert.deepEqual(matched.args[1], {name: 'options', kind: 'optional'});
-        assert.deepEqual(matched.args[2], {name: 'cb', kind: 'mandatory'});
+        assert.deepEqual(matched.args[0], {index: 0, name: 'pattern', kind: 'mandatory'});
+        assert.deepEqual(matched.args[1], {index: 1, name: 'options', kind: 'optional'});
+        assert.deepEqual(matched.args[2], {index: 2, name: 'cb', kind: 'mandatory'});
         assert(matched.captured['pattern']);
         assert(matched.captured['options']);
         assert(matched.captured['cb']);
@@ -258,8 +258,8 @@ describe('optional parameter in the middle, glob(pattern, [options], cb)', funct
         var matched = matchCode(this.matcher, code);
         assert.equal(matched.calls.length, 1);
         assert.equal(matched.args.length, 2);
-        assert.deepEqual(matched.args[0], {name: 'pattern', kind: 'mandatory'});
-        assert.deepEqual(matched.args[1], {name: 'cb', kind: 'mandatory'});
+        assert.deepEqual(matched.args[0], {index: 0, name: 'pattern', kind: 'mandatory'});
+        assert.deepEqual(matched.args[1], {index: 2, name: 'cb', kind: 'mandatory'});
         assert(matched.captured['pattern']);
         assert(! matched.captured['options']);
         assert(matched.captured['cb']);
@@ -280,8 +280,8 @@ describe('optional parameter assert(actual, [message])', function () {
         var matched = matchCode(this.matcher, 'it("test foo", function () { assert(foo, "message"); })');
         assert.equal(matched.calls.length, 1);
         assert.equal(matched.args.length, 2);
-        assert.deepEqual(matched.args[0], {name: 'actual', kind: 'mandatory'});
-        assert.deepEqual(matched.args[1], {name: 'message', kind: 'optional'});
+        assert.deepEqual(matched.args[0], {index: 0, name: 'actual', kind: 'mandatory'});
+        assert.deepEqual(matched.args[1], {index: 1, name: 'message', kind: 'optional'});
         assert(matched.captured['actual']);
         assert(matched.captured['message']);
         assert.deepEqual(espurify(matched.captured['actual']), {
@@ -311,8 +311,8 @@ describe('optional parameter assert(actual, [message])', function () {
     });
     it('#argumentSignatures', function () {
         assert.deepEqual(this.matcher.argumentSignatures(), [
-            {name: 'actual', kind: 'mandatory'},
-            {name: 'message', kind: 'optional'}
+            {index: 0, name: 'actual', kind: 'mandatory'},
+            {index: 1, name: 'message', kind: 'optional'}
         ]);
     });
 });
@@ -326,7 +326,7 @@ describe('one argument assert(actual)', function () {
         var matched = matchCode(this.matcher, 'it("test foo", function () { assert(foo); })');
         assert.equal(matched.calls.length, 1);
         assert.equal(matched.args.length, 1);
-        assert.deepEqual(matched.args[0], {name: 'actual', kind: 'mandatory'});
+        assert.deepEqual(matched.args[0], {index: 0, name: 'actual', kind: 'mandatory'});
         assert.deepEqual(espurify(matched.calls[0]), {
             type: 'CallExpression',
             callee: {
@@ -365,7 +365,7 @@ describe('one argument assert(actual)', function () {
     });
     it('#argumentSignatures', function () {
         assert.deepEqual(this.matcher.argumentSignatures(), [
-            {name: 'actual', kind: 'mandatory'}
+            {index: 0, name: 'actual', kind: 'mandatory'}
         ]);
     });
 });
@@ -379,8 +379,8 @@ describe('two args assert.equal(actual, expected)', function () {
         var matched = matchCode(this.matcher, 'it("test foo and bar", function () { assert.equal(foo, bar); })');
         assert.equal(matched.calls.length, 1);
         assert.equal(matched.args.length, 2);
-        assert.deepEqual(matched.args[0], {name: 'actual', kind: 'mandatory'});
-        assert.deepEqual(matched.args[1], {name: 'expected', kind: 'mandatory'});
+        assert.deepEqual(matched.args[0], {index: 0, name: 'actual', kind: 'mandatory'});
+        assert.deepEqual(matched.args[1], {index: 1, name: 'expected', kind: 'mandatory'});
         assert(matched.captured['actual']);
         assert.equal(matched.captured['actual'].name, 'foo');
         assert(matched.captured['expected']);
@@ -449,8 +449,8 @@ describe('two args assert.equal(actual, expected)', function () {
     });
     it('#argumentSignatures', function () {
         assert.deepEqual(this.matcher.argumentSignatures(), [
-            {name: 'actual', kind: 'mandatory'},
-            {name: 'expected', kind: 'mandatory'}
+            {index: 0, name: 'actual', kind: 'mandatory'},
+            {index: 1, name: 'expected', kind: 'mandatory'}
         ]);
     });
 });
@@ -527,8 +527,8 @@ it('not Identifier', function () {
     });
 
     assert.equal(matched.args.length, 2);
-    assert.deepEqual(matched.args[0], {name: 'actual', kind: 'mandatory'});
-    assert.deepEqual(matched.args[1], {name: 'expected', kind: 'mandatory'});
+    assert.deepEqual(matched.args[0], {index: 0, name: 'actual', kind: 'mandatory'});
+    assert.deepEqual(matched.args[1], {index: 1, name: 'expected', kind: 'mandatory'});
 
     assert.deepEqual(espurify(matched.captured['actual']), {
         type: 'CallExpression',

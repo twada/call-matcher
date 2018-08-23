@@ -109,15 +109,17 @@ CallMatcher.prototype.isSameDepthAsSignatureCallee = function (ast) {
     return (depth === currentDepth);
 };
 
-function toArgumentSignature (argSignatureNode) {
+function toArgumentSignature (argSignatureNode, idx) {
     switch(argSignatureNode.type) {
     case syntax.Identifier:
         return {
+            index: idx,
             name: argSignatureNode.name,
             kind: 'mandatory'
         };
     case syntax.ArrayExpression:
         return {
+            index: idx,
             name: argSignatureNode.elements[0].name,
             kind: 'optional'
         };
