@@ -160,14 +160,6 @@ Install
     $ npm install --save call-matcher
 
 
-#### use call-matcher module on browser
-
-`CallMatcher` function is exported
-
-    <script type="text/javascript" src="./path/to/node_modules/call-matcher/dist/call-matcher.js"></script>
-
-
-
 CHANGELOG
 ---------------------------------------
 See [CHANGELOG](https://github.com/twada/call-matcher/blob/master/CHANGELOG.md)
