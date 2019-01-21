@@ -5,6 +5,7 @@ ECMAScript CallExpression matcher made from function/method signature
 
 [![Build Status][travis-image]][travis-url]
 [![NPM version][npm-image]][npm-url]
+[![Code Style][style-image]][style-url]
 [![License][license-image]][license-url]
 
 
@@ -180,6 +181,9 @@ Licensed under the [MIT](https://github.com/twada/call-matcher/blob/master/MIT-L
 
 [travis-url]: https://travis-ci.org/twada/call-matcher
 [travis-image]: https://secure.travis-ci.org/twada/call-matcher.svg?branch=master
+
+[style-url]: https://github.com/Flet/semistandard
+[style-image]: https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg
 
 [license-url]: https://github.com/twada/call-matcher/blob/master/MIT-LICENSE.txt
 [license-image]: https://img.shields.io/badge/license-MIT-brightgreen.svg
