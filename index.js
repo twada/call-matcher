@@ -32,6 +32,7 @@ class CallMatcher {
         }
         this.signatureAst = signatureAst;
         this.signatureCalleeDepth = astDepth(signatureAst.callee, this.visitorKeys);
+        this.purifiedCallee = this.purifyAst(this.signatureAst.callee);
         this.numMaxArgs = this.signatureAst.arguments.length;
         this.numMinArgs = this.signatureAst.arguments.filter(isIdentifier).length;
     }
@@ -64,7 +65,7 @@ class CallMatcher {
         return null;
     }
     calleeAst () {
-        return this.purifyAst(this.signatureAst.callee);
+        return this.purifiedCallee;
     }
     argumentSignatures () {
         return this.signatureAst.arguments.map(toArgumentSignature);
@@ -76,7 +77,7 @@ class CallMatcher {
         if (!this.isSameDepthAsSignatureCallee(node.callee)) {
             return false;
         }
-        return deepEqual(this.purifyAst(this.signatureAst.callee), this.purifyAst(node.callee));
+        return deepEqual(this.purifiedCallee, this.purifyAst(node.callee));
     }
     isSameDepthAsSignatureCallee (ast) {
         const depth = this.signatureCalleeDepth;
