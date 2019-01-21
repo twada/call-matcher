@@ -10,7 +10,7 @@
   "bugs": "https://github.com/twada/call-matcher/issues",
   "dependencies": {
     "deep-equal": "^1.0.0",
-    "espurify": "^1.6.0",
+    "espurify": "^2.0.0",
     "estraverse": "^4.0.0"
   },
   "devDependencies": {
