@@ -4,7 +4,7 @@
  *
  * https://github.com/twada/call-matcher
  *
- * Copyright (c) 2015-2018 Takuto Wada
+ * Copyright (c) 2015-2019 Takuto Wada
  * Licensed under the MIT license.
  *   https://github.com/twada/call-matcher/blob/master/MIT-LICENSE.txt
  */
