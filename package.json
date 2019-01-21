@@ -41,8 +41,19 @@
   },
   "scripts": {
     "preversion": "npm test",
-    "lint": "semistandard --verbose index.js | snazzy",
-    "fmt": "semistandard --fix index.js",
+    "lint": "semistandard --verbose index.js test/test.js | snazzy",
+    "fmt": "semistandard --fix index.js test/test.js",
     "test": "npm run lint && mocha test"
+  },
+  "semistandard": {
+    "ignore": [
+      "/bench/",
+      "**/*.jsx"
+    ],
+    "globals": [
+      "describe",
+      "beforeEach",
+      "it"
+    ]
   }
 }
