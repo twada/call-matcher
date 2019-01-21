@@ -1,3 +1,18 @@
+## [2.0.0](https://github.com/twada/call-matcher/releases/tag/v2.0.0) (2019-01-21)
+
+
+#### Breaking Changes
+
+* [Remove core-js dependency](https://github.com/twada/call-matcher/pull/2) by [@goto-bus-stop](https://github.com/goto-bus-stop)
+* [Modernize codebase](https://github.com/twada/call-matcher/pull/3)
+
+We drop support of ancient (= before ES6) environments. Please use polyfills by your own.
+
+* [Drop support for prebuilt bundle](https://github.com/twada/call-matcher/commit/90f91e84910174268304311367163713db9bbd93)
+
+We stopped providing prebuilt bundle for browsers. Please build your own by your bundler.
+
+
 ## [1.1.0](https://github.com/twada/call-matcher/releases/tag/v1.1.0) (2018-08-23)
 
 
