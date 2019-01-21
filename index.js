@@ -15,11 +15,6 @@ var estraverse = require('estraverse');
 var espurify = require('espurify');
 var syntax = estraverse.Syntax;
 var hasOwn = Object.prototype.hasOwnProperty;
-var forEach = require('core-js/library/fn/array/for-each');
-var map = require('core-js/library/fn/array/map');
-var filter = require('core-js/library/fn/array/filter');
-var reduce = require('core-js/library/fn/array/reduce');
-var indexOf = require('core-js/library/fn/array/index-of');
 var deepEqual = require('deep-equal');
 var notCallExprMessage = 'Argument should be in the form of CallExpression';
 var duplicatedArgMessage = 'Duplicate argument name: ';
@@ -37,7 +32,7 @@ function CallMatcher (signatureAst, options) {
     this.signatureAst = signatureAst;
     this.signatureCalleeDepth = astDepth(signatureAst.callee, this.visitorKeys);
     this.numMaxArgs = this.signatureAst.arguments.length;
-    this.numMinArgs = filter(this.signatureAst.arguments, identifiers).length;
+    this.numMinArgs = this.signatureAst.arguments.filter(identifiers).length;
 }
 
 CallMatcher.prototype.test = function (currentNode) {
@@ -55,9 +50,9 @@ CallMatcher.prototype.matchArgument = function (currentNode, parentNode) {
         return null;
     }
     if (this.test(parentNode)) {
-        var indexOfCurrentArg = indexOf(parentNode.arguments, currentNode);
+        var indexOfCurrentArg = parentNode.arguments.indexOf(currentNode);
         var numOptional = parentNode.arguments.length - this.numMinArgs;
-        var matchedSignatures = reduce(this.argumentSignatures(), function (accum, argSig) {
+        var matchedSignatures = this.argumentSignatures().reduce(function (accum, argSig) {
             if (argSig.kind === 'mandatory') {
                 accum.push(argSig);
             }
@@ -77,7 +72,7 @@ CallMatcher.prototype.calleeAst = function () {
 };
 
 CallMatcher.prototype.argumentSignatures = function () {
-    return map(this.signatureAst.arguments, toArgumentSignature);
+    return this.signatureAst.arguments.map(toArgumentSignature);
 };
 
 CallMatcher.prototype.isCalleeMatched = function (node) {
@@ -165,7 +160,7 @@ function validateApiExpression (callExpression) {
         throw new Error(notCallExprMessage);
     }
     var names = {};
-    forEach(callExpression.arguments, function (arg) {
+    callExpression.arguments.forEach(function (arg) {
         var name = validateArg(arg);
         if (hasOwn.call(names, name)) {
             throw new Error(duplicatedArgMessage + name);
