@@ -171,6 +171,11 @@ AUTHOR
 * [Takuto Wada](https://github.com/twada)
 
 
+CONTRIBUTORS
+---------------------------------------
+* [Renée Kooi](https://github.com/goto-bus-stop)
+
+
 LICENSE
 ---------------------------------------
 Licensed under the [MIT](https://github.com/twada/call-matcher/blob/master/MIT-LICENSE.txt) license.

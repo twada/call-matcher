@@ -8,6 +8,12 @@
     "url": "https://github.com/twada"
   },
   "bugs": "https://github.com/twada/call-matcher/issues",
+  "contributors": [
+    {
+      "name": "Renée Kooi",
+      "url": "https://github.com/goto-bus-stop"
+    }
+  ],
   "dependencies": {
     "deep-equal": "^1.0.0",
     "espurify": "^2.0.0",
